@@ -1,7 +1,8 @@
 import axios from "axios"
 
 function Login(){
-    const handlePhoto = () => {
+    const handlePhoto = (e) => {
+        e.preventDefault()
         let photo = document.getElementById("photo").value
         let key = {
             photo : photo
@@ -13,7 +14,7 @@ function Login(){
         else{
             axios.post("http://localhost:3456/upload",key)
             .then((res)=>{
-                if(res.data.status === "uploaded"){
+                if(res.data.Status === "uploaded"){
                     alert("Uploaded")
                 }
                 else{
@@ -53,7 +54,7 @@ function Login(){
             axios.post("http://localhost:3456/login",key)
             .then((res)=>{
                 console.log(res)
-                if(res.data.Status === "loged"){
+                if(res.data.Status === "inserted"){
                     alert("inserted")
                     window.location.href = "/view"
                 }
